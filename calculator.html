@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: Montserrat;        
+        }
+        .calculator {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            margin-bottom: 10px;
+            height: 30px;
+            font-size: 18px;
+        }
+        button {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <button onclick="appendNumber('1')">1</button>
+        <button onclick="appendNumber('2')">2</button>
+        <button onclick="appendNumber('3')">3</button>
+        <button onclick="appendOperator('+')">+</button>
+        <br>
+        <button onclick="appendNumber('4')">4</button>
+        <button onclick="appendNumber('5')">5</button>
+        <button onclick="appendNumber('6')">6</button>
+        <button onclick="appendOperator('-')">-</button>
+        <br>
+        <button onclick="appendNumber('7')">7</button>
+        <button onclick="appendNumber('8')">8</button>
+        <button onclick="appendNumber('9')">9</button>
+        <button onclick="appendOperator('*')">*</button>
+        <br>
+        <button onclick="appendNumber('0')">0</button>
+        <button onclick="appendOperator('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="appendOperator('/')">/</button>
+        <br>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="calculateSquareRoot()">√</button>
+        <button onclick="appendOperator('^')">^</button>
+        <button onclick="calculatePercentage()">%</button>
+    </div>
+
+    <script>
+        function appendNumber(number) {
+            document.getElementById('display').value += number;
+        }
+
+        function appendOperator(operator) {
+            document.getElementById('display').value += operator;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            let expression = document.getElementById('display').value;
+            let result = eval(expression);
+            document.getElementById('display').value = result;
+        }
+
+        function calculateSquareRoot() {
+            let expression = document.getElementById('display').value;
+            let number = parseFloat(expression);
+            let result = Math.sqrt(number);
+            document.getElementById('display').value = result;
+        }
+
+        function calculatePercentage() {
+            let expression = document.getElementById('display').value;
+            let number = parseFloat(expression);
+            let result = number / 100;
+            document.getElementById('display').value = result;
+        }
+    </script>
+</body>
+</html>
